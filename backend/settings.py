@@ -93,9 +93,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'SfQfhWPIzNRWwsGDhAnAqHfeaZXgcsLL',
-        'HOST': 'viaduct.proxy.rlwy.net',
-        'PORT': '12086',
+        'PASSWORD': 'ryjHHMSUlunAhIJMxHGINvDjcVCnIWpm',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '21105',
     }
 }
 
@@ -148,7 +148,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-
-DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
-}
