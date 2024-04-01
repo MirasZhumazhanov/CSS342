@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/order_page.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>HappyClient</h1>
+        <div class="buttons">
+          <a href="#">Search&Discover</a>
+          <a href="#">Services</a>
+          <a href="#">Support</a>
+        </div>
+        <div class="profile-btn">
+          {% if user is not None %}
+          <a href="{% url 'profile' %}" class="profile-btn-a">
+            {{user.first_name}}
+            <img src="static/images/acc.png" alt="Profile Image" width="40px"
+          /></a>
+          {% else %}
+          <button>
+            <a
+              href="/login"
+              style="
+                text-decoration-line: none;
+                color: #000;
+                font: 1em sans-serif;
+              "
+              >Sign in</a
+            >
+            /
+            <a
+              href="/registration"
+              style="
+                text-decoration-line: none;
+                color: #000;
+                font: 1em sans-serif;
+              "
+              >Sign up</a
+            >
+          </button>
+          {% endif %}
+        </div>
+      </header>
+      <div class="main">
+        <div class="top">
+          <div class="billboard-image">
+            <h2 class="billboard-name">Some name</h2>
+            <img src="static/images/city.jpg" alt="" />
+          </div>
+          <div class="billboard-description">
+            <div class="icons">
+              <span class="material-symbols-outlined"> favorite </span>
+              <span class="material-symbols-outlined"> share </span>
+            </div>
+            <div class="description">
+              <ul>
+                <li>
+                  <span style="color: red"> Lorem </span>ipsum dolor sit, amet
+                  consectetur adipisicing elit. In voluptatibus possimus beatae,
+                  quidem repellat quis perferendis ullam! Itaque a atque
+                  molestias modi, aperiam ea similique cupiditate quas
+                  repellendus fugiat facilis!
+                </li>
+                <li>
+                  <span style="color: red">Lorem </span>ipsum dolor sit amet
+                  consectetur adipisicing elit. Voluptas iure consequuntur
+                  delectus soluta eius in numquam alias voluptate aliquid
+                  fugiat!
+                </li>
+                <li>
+                  <span style="color: red">Lorem </span> ipsum dolor sit amet
+                  consectetur adipisicing elit. Tempore iusto eligendi eum
+                  possimus quos quam odit aspernatur dolorem inventore totam?
+                </li>
+                <li>
+                  <span style="color: red">Lorem </span> ipsum dolor sit amet
+                  consectetur adipisicing elit. Veniam, perspiciatis magnam
+                  asperiores, laboriosam animi dolorem cum assumenda deserunt
+                  eaque reprehenderit id numquam nisi temporibus repellat
+                  mollitia! Omnis culpa debitis quos incidunt recusandae. Fuga
+                  explicabo temporibus, velit fugit distinctio similique iste.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

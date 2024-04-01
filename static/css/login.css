@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+.content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dff5ff;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: #3949ab;
+  color: white;
+  padding: 20px;
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.head > p {
+  font-size: 14px;
+  color: #a7a7a7;
+}
+
+img {
+  width: 70px;
+  border-radius: 50%;
+}
+.wrapper {
+  background-color: white;
+  margin-top: 70px;
+  padding: 30px;
+  border-radius: 30px;
+  width: 30%;
+}
+
+.form-control {
+  padding: 22px;
+  border: 2.5px solid #ededef;
+  border-radius: 11px;
+  outline: none;
+}
+
+.form-control:focus {
+  outline: 2.5px dashed #3949ab;
+  border-color: transparent;
+}
+
+.buttondiv {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 15rem;
+  padding: 10px;
+  border-radius: 11px;
+  background-color: #3949ab;
+  border-color: #3949ab;
+}
+
+.link {
+  width: 100%;
+  float: left;
+}
+
+.resetlink {
+  float: right;
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+.separate-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 13px;
+}
+.separate-line hr {
+  width: 35%;
+  border-width: 1.5px;
+  background-color: rgb(35, 35, 35);
+}
+
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 10px;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 7px;
+}
+.register-link p {
+  padding: 0;
+  margin: 0;
+}

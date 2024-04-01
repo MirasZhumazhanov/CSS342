@@ -1,0 +1,107 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+<div class="content">
+    <header class="header">
+        <h1>HappyClient</h1>
+    </header>
+    <div class="wrapper">
+        <div class="head">
+            <img src="{% static 'images/logo.png' %}" alt="logo">
+            <h2>User Profile</h2>
+            <p>Welcome, {{ user.username }}</p>
+            <a href="{% url 'log_out' %}" class="btn btn-primary">Log out</a>
+        </div>
+        <div class="form-outline mt-3">
+            <form id="profileForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" class="form-control" value="{{ user.first_name }}" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="surname">Surname:</label>
+                  <input type="text" id="surname" name="surname" class="form-control" value="{{ user.last_name }}" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" class="form-control" value="{{ user.email }}" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" name="username" class="form-control" value="{{ user.username }}" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="phone">Phone Number:</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" value="{{ user.profile.phone }}" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="city">City:</label>
+                  <input type="text" id="city" name="city" class="form-control" value="{{ user.profile.address }}" disabled>
+              </div>
+              <div class="form-group">
+                  <label for="company">Company:</label>
+                  <input type="text" id="company" name="company" class="form-control" value="{{ user.profile.company }}" disabled>
+              </div>
+                <div class="buttons" id="editButtons" style="display: none;">
+                  <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                    <button type="button" class="btn btn-primary cancel-btn p20" id="cancel">Cancel</button>
+                    
+                </div>
+            </form>
+            <div class="bottom-buttons">
+                <button id="editProfileBtn" class="btn btn-primary">Edit Profile</button>
+                <a href="{% url 'home' %}" id="backBtn" class="btn btn-primary cancel-btn p20">Back</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+  document.getElementById("profileForm").addEventListener("submit", function (event) {
+      // Prevent form submission
+      event.preventDefault();
+
+      // Get the phone number input value
+      var phoneNumberInput = document.getElementById("phone").value;
+
+      // Regular expression to match Kazakhstani phone numbers format (e.g., +7 707 123 4567)
+      var kzPhoneRegex = /^(?:\+7|8)\s?\(?\d{3}\)?\s?\d{3}\s?\d{2}\s?\d{2}$/;
+
+      // Check if the phone number matches the Kazakhstani format
+      if (!kzPhoneRegex.test(phoneNumberInput)) {
+          alert("Please enter a valid Kazakhstan phone number.");
+          return; // Do not proceed with form submission
+      }
+
+      // If the phone number is valid, proceed with form submission
+      this.submit();
+  });
+
+  document.getElementById("editProfileBtn").addEventListener("click", function () {
+      var inputs = document.querySelectorAll("#profileForm input");
+      inputs.forEach(function(input) {
+          input.disabled = false;
+      });
+      document.getElementById("editButtons").style.display = "block";
+      document.getElementById("editProfileBtn").style.display = "none";
+      document.getElementById("backBtn").style.display = "none";
+  });
+
+  document.getElementById("cancel").addEventListener("click", function () {
+      window.location.href = "{% url 'home' %}"; 
+  });
+</script>
+
+</body>
+</html>
+

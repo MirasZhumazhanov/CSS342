@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage</title>
+
+    <link rel="stylesheet" href="{%static 'css/homepage.css'%}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="nav-container">
+        <div class="logo">
+          <h1>HappyClient</h1>
+        </div>
+        <div class="main-buttons">
+          <a href="#about-us">About us</a>
+          <a>Order</a>
+          <a href="#for-advertisers">Services</a>
+          <a>Support</a>
+        </div>
+        <div class="login-btn">
+          {% if user is not None %}
+          <a href="{% url 'profile' %}">
+            <img src="static/images/acc.png" alt="" class="profile-img"
+          /></a>
+
+          {% else %}
+          <button class="top-btn">
+            <a class="sign-inn" href="/login">Sign in</a>
+            /
+            <a class="sign-up" href="/registration">Sign up</a>
+          </button>
+          {% endif %}
+        </div>
+      </div>
+      <div class="title-text">
+        <span
+          >Elevate Your Advertisement,<br />
+          Optimize Your Impact</span
+        >
+      </div>
+    </div>
+
+    <div id="about-us" class="main_about_us">
+      <div class="about-us-content">
+        <div class="about-us-content-text">
+          <h2>ABOUT US</h2>
+          <p>
+            At <span class="title-about">HappyClient</span>, we specialize in
+            connecting businesses with premium advertising spaces across the
+            city. Our platform simplifies the process of booking billboard
+            space, offering a seamless, user-friendly experience from search to
+            reservation. With an extensive network of digital and traditional
+            billboards, we provide unparalleled access to high-traffic
+            locations, ensuring your message reaches its intended audience
+            effectively.
+          </p>
+          <p>
+            Your story is unique, and your advertising should be too. Let
+            <span class="title-about">HappyClient</span> be the bridge to your
+            audience. Get in touch with us to explore the possibilities and
+            start making an impact today.
+          </p>
+        </div>
+        <div class="about-us-content-button">
+          <a href="#for-advertisers" class="cta">GET STARTED</a>
+        </div>
+      </div>
+    </div>
+    <div id="for-advertisers" class="main_for_advertisers">
+      <div class="for_advertiers_container">
+        <div class="for_advertisers_content">
+          <h1>FOR ADVERTISERS</h1>
+          <img src="{%static '/images/element1.jpg'%}" alt="imge" />
+          <a href="#for_boardonwers" class="for-button">Let's go</a>
+        </div>
+        <div class="advertisers-text">
+          <p>
+            Welcome to <span class="title-advertisers">HappyClient</span>, where
+            your brand's journey takes a leap into the spotlight. Imagine your
+            message, bold and vibrant, capturing the gaze of thousands across
+            the city. We make that vision a reality. With
+            <span class="title-advertisers">HappyClient</span>, you gain access
+            to an unparalleled selection of billboard locations, each chosen for
+            maximum visibility and impact. Our intuitive platform offers a
+            seamless search-to-booking process, ensuring your next campaign not
+            only resonates but also leaves a lasting impression. Explore your
+            advertising possibilities today. Your audience is waiting.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="for_boardonwers" class="main_for_board_owners">
+      <div class="for_boardonwers_container">
+        <div class="boardonwers_text">
+          <p>
+            Greetings from HappyClient – where billboards meet their potential.
+            As a valued board owner, you hold the key to a world of advertising
+            opportunities, and we're here to unlock it together. Our platform
+            specializes in bridging the gap between your billboard space and
+            advertisers eager to make their mark. By listing with us, you not
+            only enhance your billboard's visibility but also join a community
+            dedicated to optimizing outdoor advertising spaces. Enjoy
+            competitive returns, effortless management, and the flexibility to
+            connect with a diverse pool of advertisers. With HappyClient, your
+            billboard is more than a structure; it's a beacon for brands across
+            the city. Ready to elevate your billboard's value? Let's embark on
+            this journey together.
+          </p>
+        </div>
+        <div class="for_boardonwers_content">
+          <h1>FOR BOARD OWNERS</h1>
+          <img src="{%static 'images/neon-city.jpg' %}" alt="for_board" />
+          <a href="#" class="for-owners-button">GET STARTED</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="foot">
+      <div class="page">
+        <div class="logofooter">
+          <img
+            src="{%static 'images/logo.png'%}"
+            alt="foto"
+            width="60px"
+            style="border-radius: 50%"
+          />
+          <span class="page-text">HappyClient</span>
+        </div>
+        <p class="info">Elevate Your Advertisement, Optimize Your Impact</p>
+        <br /><br />
+
+        <div class="icons">
+          <img class="icon" src="{%static 'svg/twiter.svg'%}" alt="twitter" />
+          <img
+            class="icon"
+            src="{%static 'svg/facebook.svg'%}"
+            alt="facebook"
+          />
+          <img
+            class="icon"
+            src="{%static 'svg/instagram.svg'%}"
+            alt="instagram"
+          />
+          <img
+            class="icon"
+            src="{%static 'svg/telegram.svg'%}"
+            alt="telegram"
+          />
+        </div>
+      </div>
+
+      <div class="materials">
+        <div class="resources">
+          <ul class="site">
+            <li>
+              <p>Quick Links</p>
+            </li>
+            <li>
+              <a href="#" class="web site">Home</a>
+            </li>
+            <li>
+              <a href="#" class="web site">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Boards & Pricing</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Dashboard (For registered users)</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Terms of Service</a>
+            </li>
+          </ul>
+
+          <ul class="site">
+            <li>
+              <p>Contact Us</p>
+            </li>
+            <li>
+              <a class="web site"
+                >Address: 123 Advertising Blvd, Ad City, AC 12345</a
+              >
+            </li>
+            <li>
+              <a class="web site">Phone: (123) 456-7890</a>
+            </li>
+            <li>
+              <a class="web site">Email: contact@billboardadvertising.com</a>
+            </li>
+
+            <li>
+              <p>Get Started</p>
+            </li>
+            <li>
+              <a class="web site">Board List</a>
+            </li>
+            <li>
+              <a class="web site">Advertiser Sign-Up</a>
+            </li>
+          </ul>
+
+          <ul class="site">
+            <li>
+              <p>Resources</p>
+            </li>
+            <li>
+              <a href="#" class="web site">FAQs</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Careers</a>
+            </li>
+          </ul>
+
+          <div class="last-line"></div>
+          <br /><br />
+
+          <div class="number">
+            <p>
+              Copyright © 2024 Billboard Advertising Platform. All rights
+              reserved.<br />
+              Company Registration No. 123456789
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

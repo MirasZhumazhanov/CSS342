@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+</head>
+<body>
+    <div class="content">
+        <header class="header">
+            <h1>HappyClient</h1>
+        </header>
+        <div class="wrapper">
+            <div class="head">
+                <img src="{% static 'images/logo.png' %}" alt="logo" />
+                <h2>Welcome back!</h2>
+                <p>Please enter your details</p>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.username }}
+                    {% for error in form.username.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.password }}
+                    {% for error in form.password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+                <div class="link"><a class="resetlink" href="{%url 'reset_password' %}">Forgot password?</a></div>
+                <div class="buttondiv">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+                
+            </form>
+            
+            <div class="separate-line">
+                <hr>or <hr>
+            </div>
+            <div class="register-link">
+                <p>Dont have an account?</p><a href="{%url 'registration' %}">Sign up</a>
+                <p>or <a href="{%url 'home' %}">Continue as a guest</a> </p>
+            </div>
+        
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #dff5ff;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: #3949ab;
+  color: white;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.wrapper {
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 30px;
+    width: 50%; 
+    margin: 0 auto;
+    position: relative;
+  }
+  .wrapper .head p {
+    font-size: 20px; 
+}
+  
+.wrapper .head .btn {
+    padding: 2px 20px; 
+    font-size: 15px; 
+}
+
+.head > p {
+  font-size: 14px;
+  color: #a7a7a7;
+}
+
+.inline {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(2, 350px);
+  column-gap: 15px;
+}
+
+.errorlist {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: #dc3545;
+}
+
+img {
+  width: 70px;
+  border-radius: 50%;
+}
+
+input {
+  padding: 10px;
+  border: 2.5px solid #ededef;
+  border-radius: 11px;
+  outline: none;
+}
+
+input:focus {
+  outline: 2.5px dashed #3949ab;
+  border-color: transparent;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.submit-btn,
+#editProfileBtn,
+.cancel-btn,
+#backBtn {
+    width: calc(50% - 20px); /* Adjust margin if necessary */
+    padding: 10px;
+    border-radius: 11px;
+    transition: all 0.3s;
+}
+
+.submit-btn,
+#editProfileBtn {
+    background-color: #3949ab;
+    border-color: #3949ab;
+}
+
+.submit-btn:hover,
+#editProfileBtn:hover {
+    background-color: rgb(17, 123, 88);
+    border-color: rgb(17, 123, 88);
+}
+
+.cancel-btn,
+#backBtn {
+    background-color: white;
+    color: black;
+    border: 2.5px solid #ededef;
+}
+
+.cancel-btn:hover,
+#backBtn:hover {
+    background-color: rgb(17, 123, 88);
+    border-color: rgb(17, 123, 88);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 130px; 
+    height: auto;
+}
