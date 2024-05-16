@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/booking-page.css' %}">
+    <title>Book</title>
+  </head>
+  <body>
+    <div class="main-container">
+        <header class="header">
+            <h1>HappyClient</h1>
+            <div class="buttons">
+              <a href="#">Search&Discover</a>
+              <a href="#">Services</a>
+              <a href="#">Support</a>
+            </div>
+            <div class="profile-btn">
+              {% if user is not None %}
+              <a href="{% url 'profile' %}" class="profile-btn-a">
+                {{user.first_name}}
+                <img src="static/images/acc.png" alt="Profile Image" width="40px"
+              /></a>
+              {% else %}
+              <button>
+                <a
+                  href="/login"
+                  style="
+                    text-decoration-line: none;
+                    color: #000;
+                    font: 1em sans-serif;
+                  "
+                  >Sign in</a
+                >
+                /
+                <a
+                  href="/registration"
+                  style="
+                    text-decoration-line: none;
+                    color: #000;
+                    font: 1em sans-serif;
+                  "
+                  >Sign up</a
+                >
+              </button>
+              {% endif %}
+    </div>
+  </body>
+</html>

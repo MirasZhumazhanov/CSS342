@@ -1,0 +1,279 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status</title>
+    <link rel="stylesheet" href="{% static 'css/status.css' %}" />
+  </head>
+  <body>
+    <header class="container">
+      <div class="topic">
+        <a href="#" class="topic-link">
+          <span class="topic-text">HappyClient</span>
+        </a>
+      </div>
+      <nav class="navbar">
+        <ul class="list">
+          <li class="link-list">
+            <a href="/search" class="link">Billboards</a>
+          </li>
+          <li class="link-list">
+            <a href="/status" class="link line">Status</a>
+          </li>
+          <li class="link-list">
+            <a href="/support" class="link">Support</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="dropdown">
+        <input
+          type="checkbox"
+          id="dropdown-checkbox"
+          class="dropdown-checkbox"
+        />
+        <label for="dropdown-checkbox" class="dropdown-label">
+          <img
+            src="{%static 'images/acc.png'%}"
+            alt="logo"
+            style="cursor: pointer; width: 40px"
+          />
+        </label>
+        <div class="dropdown-content">
+          <a href="{% url 'profile' %}">Profile</a>
+          <a href="{% url 'log_out' %}">Log out</a>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <!-- start main -->
+    <main class="main">
+      
+
+      <div class="status-buttons">
+        <button id="all-button" class="status-button all-status">All</button>
+        <button
+          id="in-progress-button"
+          class="status-button in-progress-status"
+          style="color: #ffcc00"
+        >
+          In progress
+        </button>
+        <button
+          id="approved-button"
+          class="status-button approved-status"
+          style="color: #00cc00"
+        >
+          Approved orders
+        </button>
+        <button
+          id="canceled-button"
+          class="status-button canceled-status"
+          style="color: #ff0000"
+        >
+          Canceled
+        </button>
+      </div>
+
+      <table id="booking-table">
+        <thead class="box">
+          <tr>
+            <th>billboard name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <!-- Add more column names as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for booking in user_bookings %}
+          <tr class="booking-row" data-status="{{ booking.status }}">
+            <td>{{ booking.billboard.address }}</td>
+            <td>{{ booking.start_date }}</td>
+            <td>{{ booking.end_date }}</td>
+            <td class="status-cell">{{ booking.status }}</td>
+            <!-- Add more columns as needed -->
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+    <!-- end main -->
+
+    <!-- start footer -->
+    <footer class="foot">
+      <div class="page">
+        <div class="logofooter">
+          <img src="/assets/Screenshot 2024-02-22 at 08.21 1.png" alt="image" />
+          <span class="page-text">HappyClient</span>
+        </div>
+        <p class="word">Elevate Your Advertisement, Optimize Your Impact</p>
+        <br /><br />
+        <div class="icons">
+          <a href="https://twitter.com/?lang=ru" target="_blank">
+            <img class="icon" src="/assets/twt 1.png" alt="twitter" />
+          </a>
+          <a href="https://www.facebook.com/" target="_blank">
+            <img class="icon" src="/assets/fb 3.png" alt="facebook" />
+          </a>
+          <a href="https://www.instagram.com/?hl=ru" target="_blank">
+            <img class="icon" src="/assets/ig 1.png" alt="instagram" />
+          </a>
+          <a href="https://web.telegram.org/a/" target="_blank">
+            <img class="icon" src="/assets/telega 1.png" alt="telegram" />
+          </a>
+        </div>
+      </div>
+
+      <div class="materials">
+        <div class="resources">
+          <ul class="site">
+            <li>
+              <p>Quick Links</p>
+            </li>
+            <li>
+              <a href="#" class="web site">Home</a>
+            </li>
+            <li>
+              <a href="#" class="web site">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Boards & Pricing</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Dashboard (For registered users)</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Terms of Service</a>
+            </li>
+          </ul>
+
+          <ul class="site">
+            <li>
+              <p>Contact Us</p>
+            </li>
+            <li>
+              <a class="web site"
+                >Address: 123 Advertising Blvd, Ad City, AC 12345</a
+              >
+            </li>
+            <li>
+              <a class="web site">Phone: (123) 456-7890</a>
+            </li>
+            <li>
+              <a class="web site">Email: contact@billboardadvertising.com</a>
+            </li>
+
+            <li>
+              <p>Get Started</p>
+            </li>
+            <li>
+              <a class="web site">Board List</a>
+            </li>
+            <li>
+              <a class="web site">Advertiser Sign-Up</a>
+            </li>
+          </ul>
+
+          <ul class="site">
+            <li>
+              <p>Resources</p>
+            </li>
+            <li>
+              <a href="#" class="web site">FAQs</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Careers</a>
+            </li>
+          </ul>
+
+          <div class="last-line"></div>
+          <br /><br />
+
+          <div class="number">
+            <p>
+              Copyright © 2024 Billboard Advertising Platform. All rights
+              reserved.<br />
+              Company Registration No. 123456789
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const allButton = document.getElementById("all-button");
+        const inProgressButton = document.getElementById("in-progress-button");
+        const approvedButton = document.getElementById("approved-button");
+        const canceledButton = document.getElementById("canceled-button");
+
+        const bookingRows = document.querySelectorAll(".booking-row");
+        const statusCells = document.querySelectorAll(".status-cell");
+
+        applyInitialStatusColors();
+
+        function applyInitialStatusColors() {
+          statusCells.forEach((cell) => {
+            const status = cell.textContent.trim().toLowerCase();
+            if (status === "in progress") {
+              cell.classList.add("in-progress-status");
+            } else if (status === "approved") {
+              cell.classList.add("approved-status");
+            } else if (status === "canceled") {
+              cell.classList.add("canceled-status");
+            }
+          });
+        }
+
+        allButton.addEventListener("click", function () {
+          showAllRows();
+        });
+
+        inProgressButton.addEventListener("click", function () {
+          filterRows("in progress");
+        });
+
+        approvedButton.addEventListener("click", function () {
+          filterRows("approved");
+        });
+
+        canceledButton.addEventListener("click", function () {
+          filterRows("canceled");
+        });
+
+        function showAllRows() {
+          bookingRows.forEach((row) => {
+            row.classList.remove("hidden");
+          });
+        }
+
+        function filterRows(status) {
+          bookingRows.forEach((row, index) => {
+            const rowStatus = row.getAttribute("data-status");
+            if (rowStatus.toLowerCase() === status.toLowerCase()) {
+              row.classList.remove("hidden");
+              statusCells[index].classList.add(
+                `${status.replace(" ", "-")}-status`
+              );
+            } else {
+              row.classList.add("hidden");
+              statusCells[index].classList.remove(
+                `${status.replace(" ", "-")}-status`
+              );
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

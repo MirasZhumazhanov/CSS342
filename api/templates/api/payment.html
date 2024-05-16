@@ -1,0 +1,432 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}" />
+    <style>
+      /* CSS */
+      /* Alert box */
+      .custom-alert {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 40px; /* Increase padding for larger alert box */
+        background-color: #ffffff;
+        border: 2px solid #333333;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        z-index: 9999;
+        max-width: 400px; /* Adjust the maximum width as needed */
+        text-align: center; /* Center align the content */
+      }
+
+      /* Close button */
+      .close-btn {
+        position: absolute;
+        top: 10px; /* Adjust top position */
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px; /* Adjust font size */
+        color: #333333;
+      }
+
+      /* Close button on hover */
+      .close-btn:hover {
+        color: #ff0000; /* Change color on hover */
+      }
+
+      /* Content inside the alert box */
+      .custom-alert span {
+        display: block; /* Ensure the message appears on a new line */
+        margin-top: 20px; /* Increase top margin to position text lower */
+        font-size: 18px; /* Adjust font size */
+        color: #333333; /* Text color */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container">
+      <div class="topic">
+        <a href="#" class="topic-link">
+          <span class="topic-text">HappyClient</span>
+        </a>
+      </div>
+      <nav class="navbar">
+        <ul class="list">
+          <li class="link-list">
+            <a href="/search" class="link">Billboards</a>
+          </li>
+          <li class="link-list">
+            <a href="/status" class="link">Status</a>
+          </li>
+          <li class="link-list">
+            <a href="#" class="link">Support</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="dropdown">
+        <input
+          type="checkbox"
+          id="dropdown-checkbox"
+          class="dropdown-checkbox"
+        />
+        <label for="dropdown-checkbox" class="dropdown-label">
+          <img
+            src="{% static 'images/colorful.png' %}"
+            alt=""
+            style="width: 60px; cursor: pointer"
+          />
+        </label>
+        <div class="dropdown-content">
+          <a href="{% url 'profile' %}">Profile</a>
+          <a href="{% url 'log_out' %}">Log out</a>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <!-- start main -->
+    <main class="main">
+      <div class="detail">
+        <div class="order">Order Details</div>
+        <div class="billboard">
+          <div class="billboard-details">
+            <p>{{ request.GET.address }}</p>
+          </div>
+        </div>
+
+        <div class="price-details">
+          <p class="total">Total price: {{ total_price|add:"0" }} ₸</p>
+        </div>
+
+        <div class="buy">
+          <button id="pay-button" class="pay">Pay</button>
+        </div>
+      </div>
+      <div class="page" style="font-size: 24px">
+        <a href="/search">Billboards</a>
+        <a href="#">Billboard order</a>
+        <a href="#">Payment</a>
+      </div>
+      <h1 class="payment">Payment Details</h1>
+      <div class="information">
+        <div class="content">
+          <div>
+            <p>First Name</p>
+            <input
+              class="input-search"
+              type="text"
+              placeholder="Enter your first name"
+              id="first-name"
+              required
+            />
+          </div>
+          <div>
+            <p>Last Name</p>
+            <input
+              class="input-search"
+              type="text"
+              placeholder="Enter your last name"
+              id="last-name"
+              required
+            />
+          </div>
+        </div>
+        <div class="content">
+          <div class="search12">
+            <p>Email</p>
+            <input
+              class="input-search input-search2"
+              type="email"
+              placeholder="Enter your email"
+              id="email"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="information2">
+        <div class="content">
+          <div class="search12">
+            <p>Card number</p>
+            <input
+              class="input-search input-search2"
+              type="text"
+              placeholder="Enter your card number"
+              id="card-number"
+              required
+            />
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <p>Expiry date</p>
+            <input
+              class="input-search"
+              type="text"
+              placeholder="MM/YY"
+              id="expiry-date"
+              required
+            />
+          </div>
+          <div>
+            <p>CVC</p>
+            <input
+              class="input-search"
+              type="text"
+              placeholder="Enter your CVC"
+              id="cvc"
+              required
+            />
+          </div>
+        </div>
+        <div class="content">
+          <div class="search12">
+            <p>Cardholder name</p>
+            <input
+              class="input-search input-search2"
+              type="text"
+              placeholder="Enter cardholder name"
+              id="cardholder-name"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- end main -->
+
+    <!-- start footer -->
+    <footer class="foot">
+      <div class="footpage">
+        <div class="logofooter">
+          <img src="/assets/Screenshot 2024-02-22 at 08.21 1.png" alt="image" />
+          <span class="page-text">HappyClient</span>
+        </div>
+        <p class="word">Elevate Your Advertisement, Optimize Your Impact</p>
+        <br /><br />
+
+        <div class="icons">
+          <a href="https://twitter.com/?lang=ru" target="_blank">
+            <img class="icon" src="/assets/twt 1.png" alt="twitter" />
+          </a>
+          <a href="https://www.facebook.com/" target="_blank">
+            <img class="icon" src="/assets/fb 3.png" alt="facebook" />
+          </a>
+          <a href="https://www.instagram.com/?hl=ru" target="_blank">
+            <img class="icon" src="/assets/ig 1.png" alt="instagram" />
+          </a>
+          <a href="https://web.telegram.org/a/" target="_blank">
+            <img class="icon" src="/assets/telega 1.png" alt="telegram" />
+          </a>
+        </div>
+      </div>
+
+      <div class="materials">
+        <div class="resources">
+          <ul class="site">
+            <li>
+              <p>Quick Links</p>
+            </li>
+            <li>
+              <a href="#" class="web site">Home</a>
+            </li>
+            <li>
+              <a href="#" class="web site">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Boards & Pricing</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Dashboard (For registered users)</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Terms of Service</a>
+            </li>
+          </ul>
+          <ul class="site">
+            <li>
+              <p>Contact Us</p>
+            </li>
+            <li>
+              <a class="web site"
+                >Address: 123 Advertising Blvd, Ad City, AC 12345</a
+              >
+            </li>
+            <li>
+              <a class="web site">Phone: (123) 456-7890</a>
+            </li>
+            <li>
+              <a class="web site">Email: contact@billboardadvertising.com</a>
+            </li>
+
+            <li>
+              <p>Get Started</p>
+            </li>
+            <li>
+              <a class="web site">Board List</a>
+            </li>
+            <li>
+              <a class="web site">Advertiser Sign-Up</a>
+            </li>
+          </ul>
+
+          <ul class="site">
+            <li>
+              <p>Resources</p>
+            </li>
+            <li>
+              <a href="#" class="web site">FAQs</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="web site">Careers</a>
+            </li>
+          </ul>
+
+          <div class="last-line"></div>
+          <br /><br />
+
+          <div class="number">
+            <p>
+              Copyright © 2024 Billboard Advertising Platform. All rights
+              reserved.<br />
+              Company Registration No. 123456789
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- HTML -->
+    <div id="custom-alert" class="custom-alert">
+      <span id="alert-message"></span>
+      <button id="close-btn" class="close-btn">close</button>
+    </div>
+
+    <script>
+      function showAlert(message) {
+        var alertBox = document.getElementById("custom-alert");
+        var alertMessage = document.getElementById("alert-message");
+        alertMessage.textContent = message;
+        alertBox.style.display = "block";
+      }
+
+      function hideAlert() {
+        var alertBox = document.getElementById("custom-alert");
+        alertBox.style.display = "none";
+      }
+      function closeAlert() {
+        var alertBox = document.getElementById("custom-alert");
+        alertBox.style.display = "none";
+      }
+
+      // Attach click event listener to the close button
+      document
+        .getElementById("close-btn")
+        .addEventListener("click", closeAlert);
+      document
+        .getElementById("expiry-date")
+        .addEventListener("input", function () {
+          var value = this.value.replace(/\D/g, ""); // Remove non-numeric characters
+          if (value.length > 2) {
+            this.value = value.slice(0, 2) + "/" + value.slice(2); // Add "/" after the second character
+          }
+        });
+      function validatePaymentDetails() {
+        var cvc = document.getElementById("cvc").value;
+        var expiryDate = document.getElementById("expiry-date").value;
+        var email = document.getElementById("email").value;
+        var firstName = document.getElementById("first-name").value;
+        var lastName = document.getElementById("last-name").value;
+        var cardholderName = document.getElementById("cardholder-name").value;
+        var cardnumber = document.getElementById("card-number").value;
+
+        // Check CVC
+        if (cvc.length !== 3) {
+          showAlert("CVC must be 3 digits.");
+          return false;
+        }
+
+        if (cardnumber.length !== 16) {
+          showAlert("Card number must be 16 digits.");
+          return false;
+        }
+
+        // Check expiry date format (you may need more advanced validation)
+        if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
+          showAlert("Expiry date must be in MM/YY format.");
+          return false;
+        }
+
+        // Check email format
+        if (!/\S+@\S+\.\S+/.test(email)) {
+          showAlert("Invalid email address.");
+          return false;
+        }
+
+        // Check if cardholder name matches first and last name
+        if (
+          cardholderName.toLowerCase() !==
+          (firstName + " " + lastName).toLowerCase()
+        ) {
+          showAlert("Cardholder name must match first and last name.");
+          return false;
+        }
+
+        return true;
+      }
+
+      // Function to simulate payment process
+      function simulatePayment() {
+        // Validate payment details first
+        if (!validatePaymentDetails()) {
+          return;
+        }
+
+        // Simulate payment processing (replace with actual payment logic)
+        setTimeout(function () {
+          showAlert("Payment successful!");
+          // You can redirect to a success page or perform other actions here
+        }, 1000); // Simulate 1-second delay for processing
+        setTimeout(function () {
+          showAlert("Payment successful!");
+          // Redirect to the status page
+          window.location.href = "/status/";
+        }, 1000); // Simulate 1-second delay for processing
+      }
+
+      // Attach click event listener to the pay button
+      document
+        .getElementById("pay-button")
+        .addEventListener("click", simulatePayment);
+
+      // Function to get URL query parameters
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Retrieve the price value from the URL query parameters
+      var priceValue = getUrlParameter("price");
+
+      // Update the placeholder text with the price value
+      document.getElementById("price-placeholder").innerText = priceValue;
+      document.getElementById("address-placeholder").innerText = priceValue;
+    </script>
+  </body>
+</html>

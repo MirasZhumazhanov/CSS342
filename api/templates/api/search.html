@@ -1,0 +1,368 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HappyClient</title>
+    <!-- Include CSS file -->
+    <link rel="stylesheet" href="{% static 'css/search.css' %}" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="container">
+      <!-- Logo -->
+      <div class="topic">
+        <a href="{% url 'home' %}" class="topic-link">
+          <span class="topic-text">HappyClient</span>
+        </a>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="navbar">
+        <ul class="list">
+          <li class="link-list">
+            <a href="#" class="link line">Billboards</a>
+          </li>
+          <li class="link-list">
+            <a href="/status" class="link">Status</a>
+          </li>
+          <li class="link-list">
+            <a href="#" class="link">Support</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown">
+        <input
+          type="checkbox"
+          id="dropdown-checkbox"
+          class="dropdown-checkbox"
+        />
+        <label for="dropdown-checkbox" class="dropdown-label">
+          <img
+            src="{% static 'images/colorful.png' %}"
+            alt=""
+            style="width: 60px; cursor: pointer"
+          />
+        </label>
+        <div class="dropdown-content">
+          <a href="{% url 'profile' %}">Profile</a>
+          <a href="{% url 'log_out' %}">Log out</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main">
+      <!-- Search Bar -->
+      <div class="search">
+        <form id="search-form">
+          <input
+            class="input-search"
+            type="text"
+            id="search-input"
+            name="q"
+            placeholder="Search"
+            oninput="search()"
+          />
+        </form>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="information">
+        <select class="menu-bar" id="type-filter" onchange="filterBillboards()">
+          <option value="all">All Types</option>
+          <option value="Traditional Static">Traditional</option>
+          <option value="Digital">Digital</option>
+          <option value="Mobile">Mobile</option>
+        </select>
+
+        <select
+          class="menu-bar"
+          id="category-filter"
+          onchange="filterBillboards()"
+        >
+          <option value="all">All categories</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+      </div>
+
+      <div class="lines"></div>
+
+      <!-- Billboard Count -->
+      <h2 class="main-text">
+        <span id="filtered-count">{{ billboards.count }}</span> billboards found
+      </h2>
+
+      <!-- Product Listing -->
+      <div class="table">
+        <div class="products" style="column-gap: 20px">
+          {% for billboard in billboards %}
+          <div
+            class="product"
+            style="width: 27%; padding: 15px; margin-bottom: 20px"
+            data-category="{{ billboard.category }}"
+            data-type="{{ billboard.type }}"
+            onclick="redirectToOrderPage({{ billboard.id }})"
+          >
+            <img src="{{ billboard.image.url }}" alt="" />
+            <div class="price">{{ billboard.price }} ₸</div>
+            <span class="address">{{ billboard.address }}</span>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="pagination">
+        <button id="prevPage" onclick="prevPage()">Prev</button>
+        <span id="currentPage"></span>
+        <button id="nextPage" onclick="nextPage()">Next</button>
+      </div>
+    </main>
+
+    <!-- Map Section -->
+    <div class="map-container">
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=1kBJv_PbLB0_9T_VCJ9WHekUJg55eRc8&ehbc=2E312F"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="foot">
+      <div class="page">
+        <!-- Logo and Company Name -->
+        <div class="logofooter">
+          <img
+            src="{%static 'images/logo.png'%}"
+            alt="image"
+            style="width: 70px; border-radius: 50%"
+          />
+          <span class="page-text">HappyClient</span>
+        </div>
+        <!-- Company Information -->
+        <p class="info">Elevate Your Advertisement, Optimize Your Impact</p>
+        <br /><br />
+
+        <!-- Social Media Icons -->
+        <div class="icons">
+          <a href="https://twitter.com/?lang=ru" target="_blank">
+            <img class="icon" src="{%static 'svg/twiter.svg'%}" alt="twitter" />
+          </a>
+          <a href="https://www.facebook.com/" target="_blank">
+            <img
+              class="icon"
+              src="{%static 'svg/facebook.svg'%}"
+              alt="facebook"
+            />
+          </a>
+          <a href="https://www.instagram.com/?hl=ru" target="_blank">
+            <img
+              class="icon"
+              src="{%static 'svg/instagram.svg'%}"
+              alt="instagram"
+            />
+          </a>
+          <a href="https://web.telegram.org/a/" target="_blank">
+            <img
+              class="icon"
+              src="{%static 'svg/telegram.svg'%}"
+              alt="telegram"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Resource Links and Company Information -->
+      <div class="materials">
+        <div class="resources">
+          <!-- Quick Links -->
+          <ul class="site">
+            <li>
+              <p>Quick Links</p>
+            </li>
+            <li>
+              <a href="#" class="web site">Home</a>
+            </li>
+            <!-- Add more quick links -->
+          </ul>
+
+          <!-- Contact Information -->
+          <ul class="site">
+            <li>
+              <p>Contact Us</p>
+            </li>
+            <li>
+              <a class="web site"
+                >Address: 123 Advertising Blvd, Ad City, AC 12345</a
+              >
+            </li>
+            <!-- Add more contact details -->
+          </ul>
+
+          <!-- Additional Resources -->
+          <ul class="site">
+            <li>
+              <p>Resources</p>
+            </li>
+            <li>
+              <a href="#" class="web site">FAQs</a>
+            </li>
+            <!-- Add more resource links -->
+          </ul>
+
+          <!-- Copyright Information -->
+          <div class="last-line"></div>
+          <br /><br />
+
+          <div class="number">
+            <p>
+              Copyright © 2024 Billboard Advertising Platform. All rights
+              reserved.<br />
+              Company Registration No. 123456789
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to show cards based on current page
+        var products = document.querySelectorAll(".product");
+        var cardsPerPage = 6; // Number of cards per page
+        var currentPage = 1; // Current page
+        var totalPages = Math.ceil(products.length / cardsPerPage); // Calculate total pages
+
+        function showCards() {
+          var start = (currentPage - 1) * cardsPerPage;
+          var end = start + cardsPerPage;
+          for (var i = 0; i < products.length; i++) {
+            if (i >= start && i < end) {
+              products[i].style.display = "block";
+            } else {
+              products[i].style.display = "none";
+            }
+          }
+        }
+
+        // Function to update pagination information
+        function updatePagination() {
+          document.getElementById("currentPage").innerText =
+            "Page " + currentPage + " of " + totalPages;
+          document.getElementById("prevPage").disabled = currentPage === 1;
+          document.getElementById("nextPage").disabled =
+            currentPage === totalPages;
+        }
+
+        window.prevPage = function () {
+          if (currentPage > 1) {
+            currentPage--;
+            showCards();
+            updatePagination();
+          }
+        };
+
+        window.nextPage = function () {
+          if (currentPage < totalPages) {
+            currentPage++;
+            showCards();
+            updatePagination();
+          }
+        };
+
+        showCards();
+        updatePagination();
+      });
+
+      // Function to filter billboards based on type, price, and search query
+      function filterBillboards() {
+        var category = document.getElementById("category-filter").value; // Get selected category
+        var type = document.getElementById("type-filter").value; // Get selected type
+        var query = document.getElementById("search-input").value.toLowerCase(); // Get search query
+
+        var billboards = document.getElementsByClassName("product");
+        var count = 0; // Initialize count
+
+        for (var i = 0; i < billboards.length; i++) {
+          var billboard = billboards[i];
+          var billboardCategory = billboard.getAttribute("data-category");
+          var billboardType = billboard.getAttribute("data-type");
+          var address = billboard
+            .querySelector(".address")
+            .textContent.toLowerCase();
+
+          var categoryMatch =
+            category === "all" || category === billboardCategory;
+          var typeMatch = type === "all" || type === billboardType;
+          var searchMatch = address.includes(query);
+
+          if (categoryMatch && typeMatch && searchMatch) {
+            billboard.style.display = "block";
+            count++; // Increment count
+          } else {
+            billboard.style.display = "none";
+          }
+        }
+
+        document.getElementById("filtered-count").textContent = count;
+      }
+
+      // Function to perform search
+      function search() {
+        var query = document.getElementById("search-input").value.toLowerCase();
+        var products = document.getElementsByClassName("product");
+        for (var i = 0; i < products.length; i++) {
+          var product = products[i];
+          var address = product
+            .querySelector(".address")
+            .textContent.toLowerCase();
+          if (address.includes(query)) {
+            product.style.display = "block";
+          } else {
+            product.style.display = "none";
+          }
+        }
+      }
+
+      // Event listeners for filter changes and search submission
+      document
+        .getElementById("type-filter")
+        .addEventListener("change", filterBillboards);
+      document
+        .getElementById("price-filter")
+        .addEventListener("change", filterBillboards);
+      document
+        .getElementById("search-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          search();
+        });
+
+      // Event listener for adding billboards to the cart
+      document.addEventListener("DOMContentLoaded", function () {
+        // Pagination and filtering functions
+
+        // Function to submit form on button click
+        document.querySelectorAll(".cart-button").forEach(function (button) {
+          button.addEventListener("click", function (event) {
+            var form = button.closest("form");
+            form.submit();
+          });
+        });
+      });
+      function redirectToOrderPage(billboardId) {
+        var orderPageUrl = "{% url 'order_page' 0 %}".replace("0", billboardId);
+        window.location.href = orderPageUrl;
+      }
+    </script>
+  </body>
+</html>

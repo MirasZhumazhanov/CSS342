@@ -3,7 +3,7 @@ from .models import CustomUser
 from django.contrib.auth.forms import AuthenticationForm
 from django.db import IntegrityError
 from django.db import models
-from .models import Profile  
+from .models import Profile
 
 
 class RegistrationForm(forms.ModelForm):
@@ -63,4 +63,3 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['phone', 'address', 'company', 'image']
-        

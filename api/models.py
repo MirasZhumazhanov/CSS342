@@ -77,3 +77,56 @@ class Profile(models.Model):
     company = models.CharField(max_length=100, blank=True)
     image = models.ImageField(
         upload_to='profile_images', default='profile_images/acc.png')
+
+
+class Billboard(models.Model):
+    SIZE_CHOICES = [
+        ('Small', 'Small'),
+        ('Medium', 'Medium'),
+        ('Large', 'Large'),
+    ]
+    CATEGORY_TYPES = [
+        ('Traditional Static', 'Traditional Static'),
+        ('Digital', 'Digital'),
+        ('Mobile', 'Mobile'),
+    ]
+
+    type = models.CharField(max_length=100, choices=CATEGORY_TYPES, blank=True)
+    category = models.CharField(
+        max_length=50, choices=SIZE_CHOICES, blank=True)
+    address = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to='billboard_images/', blank=True)
+    district = models.CharField(max_length=120, blank=True)
+    size = models.CharField(max_length=200, blank=True)
+    price = models.CharField(max_length=200, blank=True)
+
+    def __str__(self) -> str:
+        return self.address
+
+
+class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('In progress', 'In progress'),
+        ('Canceled', 'Canceled'),
+        ('Approved', 'Approved'),
+    ]
+
+    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    billboard = models.ForeignKey(Billboard, on_delete=models.CASCADE)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    total_cost = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True)
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='In progress')
+
+    def __str__(self) -> str:
+        return self.customer.username + ' | ' + self.status
+
+
+class Review(models.Model):
+    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+    comment = models.TextField(blank=True)

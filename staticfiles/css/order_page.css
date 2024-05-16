@@ -1,81 +1,98 @@
-@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Saira Semi Condensed", sans-serif;
-}
-a,
-p {
-  font-size: 16px;
-}
-.container {
-  width: 100vw;
-  height: 100vh;
-}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  text-align: start;
-  background-color: #3949ab;
-  color: white;
-  padding: 20px;
-}
 
-.container a {
-  text-decoration: none;
-  color: white;
-}
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 20%;
-}
-
-.top {
-  display: flex;
-  margin-top: 100px;
-  justify-content: center;
-  column-gap: 50px;
-}
 
 .billboard-image {
-  max-width: 50vw;
-}
-.billboard-description {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-}
-.icons {
-  display: flex;
-  column-gap: 10px;
-  justify-content: end;
-}
-.description {
-  float: left;
-  width: 350px;
-  overflow-wrap: break-word;
-}
-.description ul {
-  list-style: none;
-  row-gap: 15px;
+    max-width: 50vw;
+    margin-right: 20px;
 }
 
-.profile-btn-a {
-  display: flex;
-  justify-content: space-between;
-  column-gap: 10px;
-  align-items: center;
-  text-align: center;
+.billboard-description {
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex: 1;
+}
+
+.icons {
+    display: flex;
+    overflow-y: hidden;
+    column-gap: 10px;
+    justify-content: end;
+}
+
+.description {
+    float: left;
+    width: 350px;
+    overflow-wrap: break-word;
+    margin-top: -50px;
+}
+
+.description ul {
+    list-style: none;
+    row-gap: 15px;
+    padding-left: 0;
 }
 
 .billboard-image img {
-  max-width: 500px;
-  border-radius: 11px;
+    max-width: 500px;
+    border-radius: 11px;
 }
+
+
+
+
+.calendar-container {
+    width: 800px;
+    margin-top: -20px;
+    
+}
+
+#calendar a {
+    color: #000 !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.fc-button {
+    column-gap: 20px;
+}
+
+.top-btn {
+    background-color: white;
+    border-radius: 11px;
+    font-family: "Saira Semi Condensed", sans-serif;
+    font-size: 25px;
+    text-align: center;
+    padding: 0 10px 0 10px;
+    box-shadow: -2px 3px 0px 1.5px rgb(61, 61, 218);
+}
+
+.top-btn a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #000000;
+    font-size: 25px;
+    transition: all 0.1s ease;
+}
+
+.top-btn a:hover {
+    color: #5769d7;
+    text-decoration: underline;
+}
+
+#id_name {
+    width: 300px;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+
+
+
+

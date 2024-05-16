@@ -21,15 +21,19 @@
           <h1>HappyClient</h1>
         </div>
         <div class="main-buttons">
-          <a href="#about-us">About us</a>
-          <a>Order</a>
-          <a href="#for-advertisers">Services</a>
-          <a>Support</a>
+          <a href="/search">Billboards</a>
+          <a href="/status">Status</a>
+          <a href="/support">Support</a>
         </div>
+
         <div class="login-btn">
           {% if user is not None %}
           <a href="{% url 'profile' %}">
-            <img src="static/images/acc.png" alt="" class="profile-img"
+            <img
+              src="{% static 'images/colorful.png' %}"
+              alt=""
+              class="profile-img"
+              style="width: 60px"
           /></a>
 
           {% else %}

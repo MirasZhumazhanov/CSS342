@@ -1,0 +1,188 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link rel="stylesheet" href="{% static 'css/support.css' %}">
+</head>
+<body>
+    <header class="container">
+        <div class="topic">
+            <a href="#" class="topic-link">
+                <span class="topic-text">HappyClient</span>
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="list">
+                <li class="link-list">
+                    <a href="/search" class="link">Billboards</a>
+                </li>
+                <li class="link-list">
+                    <a href="/status" class="link ">Status</a>
+                </li>
+                <li class="link-list">
+                    <a href="#" class="link line">Support</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="dropdown">
+            <input type="checkbox" id="dropdown-checkbox" class="dropdown-checkbox">
+            <label for="dropdown-checkbox" class="dropdown-label">
+                <img src="{% static 'images/acc.png' %}" alt="" style="width: 40px; cursor: pointer;">
+            </label>
+            <div class="dropdown-content">
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'log_out' %}">Log out</a>
+                
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    <main class="main">
+        
+        <div class="title">How can I help you ?</div>
+        
+        <div class="title1">FAQ</div>
+        <div class="questions">
+            <p class="question">Question 1 ?</p>
+            <div class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque nulla eveniet voluptatibus esse. Facere doloribus laboriosam architecto voluptate a aperiam totam magni, consequuntur officiis eius consectetur laudantium? Repudiandae, magni.</div>
+        
+            <p class="question">Question 2 ?</p>
+            <div class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iure repellat eveniet delectus a dolorem provident cumque neque quo fugiat, molestiae nihil impedit mollitia consequatur corporis perferendis ab? Maxime, eveniet.</div>
+        
+            <p class="question">Question 3 ?</p>
+            <div class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus harum, dolorum ut, tempora eius laboriosam delectus illum assumenda magni esse consectetur praesentium minima pariatur, quod sit repellat perspiciatis quas beatae.</div>
+
+            <p class="question">Question 4 ?</p>
+            <div class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, modi cupiditate! Quos numquam voluptatem eligendi saepe repellat quaerat dolorum, temporibus incidunt accusamus magnam cupiditate soluta molestias sit autem maiores minima?</div>
+            <p class="question">Question 5 ?</p>
+            <div class="answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla quasi, sit impedit laboriosam a totam voluptatum suscipit laborum minima harum ipsum non consequatur repudiandae quisquam dolore tempore fuga porro quae.</div>
+            
+            <p class="question">Question 6 ?</p>
+            <div class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque nulla eveniet voluptatibus esse. Facere doloribus laboriosam architecto voluptate a aperiam totam magni, consequuntur officiis eius consectetur laudantium? Repudiandae, magni.</div>
+        
+            <p class="question">Question 7 ?</p>
+            <div class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque nulla eveniet voluptatibus esse. Facere doloribus laboriosam architecto voluptate a aperiam totam magni, consequuntur officiis eius consectetur laudantium? Repudiandae, magni.</div>
+        </div>
+    </main>
+
+    <!-- start footer -->
+    <footer class="foot">
+        <div class="page">
+            <div class="logofooter">
+                <img src="/assets/Screenshot 2024-02-22 at 08.21 1.png" alt="image">
+                <span class="page-text">HappyClient</span>
+            </div>
+            <p class="word">Elevate Your Advertisement, Optimize Your Impact</p><br><br>
+
+            <div class="icons">
+                <a href="https://twitter.com/?lang=ru" target="_blank">
+                    <img class="icon" src="/assets/twt 1.png" alt="twitter">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img class="icon" src="/assets/fb 3.png" alt="facebook">
+                </a>
+                <a href="https://www.instagram.com/?hl=ru" target="_blank">
+                    <img class="icon" src="/assets/ig 1.png" alt="instagram">
+                </a>
+                <a href="https://web.telegram.org/a/" target="_blank">
+                    <img class="icon" src="/assets/telega 1.png" alt="telegram">
+                </a>
+            </div>
+        </div>
+        
+        <div class="materials">
+            <div class="resources">
+                    <ul class="site">
+                        <li>
+                            <p>Quick Links</p>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Boards & Pricing</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Dashboard (For registered users)</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Terms of Service</a>
+                        </li>
+                    </ul>
+                    <ul class="site">
+                        <li>
+                            <p>Contact Us</p>
+                        </li>
+                        <li>
+                            <a class="web site">Address: 123 Advertising Blvd, Ad City, AC 12345</a>
+                        </li>
+                        <li>
+                            <a class="web site">Phone: (123) 456-7890</a>
+                        </li>
+                        <li>
+                            <a class="web site">Email: contact@billboardadvertising.com</a>
+                        </li>
+    
+                        <li>
+                            <p>Get Started</p>
+                        </li>
+                        <li>
+                            <a class="web site">Board List</a>
+                        </li>
+                        <li>
+                            <a class="web site">Advertiser Sign-Up</a>
+                        </li>
+                    </ul>
+
+                    <ul class="site">
+                        <li>
+                            <p>Resources</p>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#" class="web site">Careers</a>
+                        </li>
+                    </ul>
+
+                    <div class="last-line"></div><br><br>
+                    
+                    <div class="number">
+                        <p>Copyright © 2024 Billboard Advertising Platform. All rights reserved.<br>
+                            Company Registration No. 123456789</p>
+                    </div>
+            </div>
+        </div>
+    </footer>
+    <script >
+        document.addEventListener("DOMContentLoaded", function() {
+            var questions = document.querySelectorAll('.question');
+            questions.forEach(function(question) {
+                question.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var answer = this.nextElementSibling;
+                    if (answer.style.display === 'block') {
+                        answer.style.display = 'none';
+                    } else {
+                        answer.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('registration/', views.reg_page, name='registration'),
@@ -8,6 +10,14 @@ urlpatterns = [
     path('', views.home_page, name='home'),
     path('log_out', views.logout_view, name='log_out'),
     path('profile/', views.profile, name='profile'),
+    path('bookings/<int:pk>', views.get_bookings, name='bookings'),
+    path('add_event/', views.add_event, name='add_event'),
+    path('status/', views.status, name='status'),
+    path('search/', views.search_billboards, name='search_page'),
+    path('order/<int:pk>/', views.order_page, name='order_page'),
+    path('payment/', views.payment, name='payment'),
+    path('support/', views.support_page, name='support'),
+
 
 
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
@@ -21,5 +31,7 @@ urlpatterns = [
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
 
-    path('order', views.oprder_page, name='order')
-]
+    path('order/<int:pk>', views.order_page, name='order'),
+
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

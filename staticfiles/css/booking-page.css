@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+a,
+p {
+  font-size: 16px;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: start;
+  background-color: #3949ab;
+  color: white;
+  padding: 20px;
+}
+
+.main-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.buttons a {
+  transition: all 0.2s linear;
+}
+
+.buttons a:hover {
+  color: rgb(238, 186, 16);
+}
